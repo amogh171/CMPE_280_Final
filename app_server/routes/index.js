@@ -21,42 +21,11 @@ router.get('/home', ctrlMain.home);
  */
 router.get('/dragDrop', ctrlMain.dragDrop);
 
-/*
- * GET drug name page.
- */
-router.get('/drugName', ctrlMain.drugName);
-
-/*
- * GET State vs Death page.
- */
-// router.get('/feedback', ctrlMain.home);
-
-router.get('/StateVsDeath', ctrlMain.StateVsDeath);
-
-/*
- * GET State vs Population page.
- */
-// router.get('/feedback', ctrlMain.home);
-
-router.get('/StateVsPop', ctrlMain.StateVsPop);
-
-/*
- * GET heatmap page.
- */
-// router.get('/feedback', ctrlMain.home);
-
-router.get('/heatmap', ctrlMain.heatmap);
 
 /*
  * GET feedback page.
  */
 router.get('/feedback', ctrlMain.get_feedback);
-
-
-/*
- * GET About US page.
- */
-// router.get('/aboutUs', ctrlMain.aboutUs);
 
 
 // router.get('/aboutUs', function(req, res){
@@ -96,35 +65,6 @@ router.get('/overdose', ctrlMain.overdoseGetAll);
  */
 router.get('/overdose/:id', ctrlMain.overdoseGet);
 
-/*
- * GET form for new data
- */
-router.get('/newoverdose', ctrlMain.overdoseNewForm);
-
-/*
- * GER form to edit existing data
- */
-router.get('/editoverdose/:id', ctrlMain.overdoseEditForm);
-
-/*
- * POST Overdose page.
- */
-router.post('/addOverdose', ctrlMain.overdosePost);
-
-/*
- * PUT Overdose page.
- */
-router.put('/overdose/:id', ctrlMain.overdoseUpdate);
-
-/*
- * DELETE Overdose page.
- */
-router.delete('/delete/:id', ctrlMain.overdoseDelete);
-
-/*
- * POST METHOD FOR SEARCHING AND RETREIVING OVERDOSE DATA
- */
-router.get('/search/:state', ctrlMain.overdoseSearch);
 
 // get dashboard
 router.get('/dashboard', ctrlMain.dashboard);

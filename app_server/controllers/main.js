@@ -19,40 +19,6 @@ module.exports.get_feedback = function(request, result)
 };
 
 /*
- * POST feedback.
- */
- 
-/*module.exports.post_feedback = function(request, result) 
-{
-     //result.send("Thank you for your feedback");
-};*/
-
-/*
- * GET StateVsDeath.
- */
-module.exports.StateVsDeath = function(request, result) 
-{
-    result.render('StateVsDeath');
-};
-
-/*
- * GET StateVsPop.
- */
-module.exports.StateVsPop = function(request, result) 
-{
-    result.render('StateVsPop');
-};
-
-/*
- * GET heatmap.
- */
-module.exports.heatmap = function(request, result) 
-{
-    result.render('heatmap');
-};
-
-
-/*
  * GET drug names.
  */
 module.exports.drugName = function(request, result) 
@@ -132,13 +98,6 @@ module.exports.overdoseGetAll = function(request, result)
     result.render('Overdoses', {data : results});
     
     });
-    //result.sendFile('Overdoses.html',{ root: "./app_server/views" });
-    
-
-	// we'd want to pass this above "result" json to out html to display.. so sendFile wont wont work anymore,
-    // we'd have to use something like render to pass arguments to front end
-    // result.render('Overdoses.html');
-
 };
 
 
@@ -154,79 +113,6 @@ module.exports.overdoseGet = function(request, result)
     });
    
 };
-
-/*
- * GET for to add new overdose
- */
-module.exports.overdoseNewForm = function(request, result) 
-{
-    result.render('addForm');  
-};
-
-/*
- * GET form to edit overdose
- */
-module.exports.overdoseEditForm = function(request, result) 
-{
-    result.render('editForm');  
-};
-
-/*
- * POST overdose.
- */
- module.exports.overdosePost = function(req, res) 
-{
-    let product = new Overdose(
-        {
-            State: req.body.State,
-            Population: req.body.Population,
-            Deaths: req.body.Deaths,
-            Abbrev: req.body.Abbrev
-        }
-    );
-
-    product.save(function (err) {
-        if (err) {
-            return next(err);
-        }
-        res.send('Entry Inserted successfully')
-    })
-};
-
-module.exports.overdoseUpdate = function (req, res) 
-{         	console.log(req.params.id+" req.params.id");
-    //var update = JSON.parse(req.body);
-    Overdose.findOneAndUpdate({"State" :req.params.id}, { $set: req.body}, function (err, Overdose) {
-    	console.log(req.body+" req.body");
-    	if (err) return next(err);
-        res.send(req.body);
-    });
-};
-
-module.exports.overdoseDelete = function(req, res) 
-{   /*
-    Overdose.findByIdAndRemove(req.params.id, function (err) {
-    	console.log(req.params.id+" req.params.id");
-        if (err) return next(err);
-        res.send('Deleted successfully!');
-    })
-    */
-    Overdose.findOneAndDelete({"State" :req.params.id}, function (err) {
-    	console.log(req.params.id+" req.params.id");
-        if (err) return next(err);
-        res.send('Deleted successfully!');
-    })
-};
-
-module.exports.overdoseSearch = function(req, res)
-{
-    Overdose.find({ State: req.params.state}, function(err, results){
-
-        // result.render('Overdoses', {data : results});
-        res.send(results);        
-        
-    });
-}
 
 /*
  * GET about us.
