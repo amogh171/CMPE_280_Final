@@ -5,9 +5,27 @@ var prescriberInfo = require('../models/prescriberinfo');
 /*
  * GET home page.
  */
-module.exports.home = function(request, result) 
+module.exports.home = async function(request, result) 
 {
-    result.render('index');
+    var stateVsDeathRatio = await OverdoseNew.aggregate([
+        { $project: {
+            _id : "$Abbrev",
+            ratio : { $divide :["$Deaths", "$Population"] } 
+            }
+        }
+    ]).limit(50);
+
+   
+    
+    var statevsdeath_columns = ["State","DeathPopRatio"];
+   var  statevsdeath_rows = [];
+
+    stateVsDeathRatio.forEach(function(row) {
+        statevsdeath_rows.push([row._id, row.ratio*10000])
+    });
+    console.log(statevsdeath_rows);
+    result.render('index', {statevsdeath_columns : JSON.stringify(statevsdeath_columns),
+            statevsdeath_rows : JSON.stringify(statevsdeath_rows)});
 };
 
 /*
