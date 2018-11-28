@@ -7,45 +7,56 @@
 	<script type="text/javascript" src="/jquery-ui-theme/external/jquery/jquery.js"></script>
   	<script type="text/javascript" src="/jquery-ui-theme/jquery-ui.min.js"></script>
   	<script type="text/javascript" src="/js/accordion.js"></script>
-  	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   	
-  	    <script type="text/javascript">
-     // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
- google.charts.setOnLoadCallback(drawVisualization);
-      function drawVisualization() {
-       var tableRow=<%- statevsdeath_rows %>;
-  var data = new google.visualization.DataTable();
-  data.addColumn('string', 'State');
-    data.addColumn('number', 'Rate');
-    tableRow.forEach(function(row) {
-    console.log(row[0],row[1]);
-        data.addRow([row[0], Number(row[1])]);
-    });
+  	<script type="text/javascript">
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', {'packages':['corechart']});
+ 	google.charts.setOnLoadCallback(drawVisualization);
+ 	
+ 	function drawVisualization() {
+ 	    var tableRow=<%- statevsdeath_rows %>;
+ 	 	var data = new google.visualization.DataTable();
+ 	 	data.addColumn('string', 'State');
+ 	   	data.addColumn('number', 'Rate');
+ 	   	tableRow.forEach(function(row) {
+ 	   		console.log(row[0],row[1]);
+ 	       	data.addRow([row[0], Number(row[1])]);
+ 	   	});
 
-  var geochart = new google.visualization.GeoChart(
-      document.getElementById('visualization'));
-  geochart.draw(data, {width: 556, height: 347, region: "US", resolution: "provinces"});
- //handle click 
-  google.visualization.events.addListener(geochart, 'select',selectHandler );
+ 	   	var options = {'title':'Heat Map of USA',
+ 	   				   'region': "US",
+ 	   				   'width' : 1000,
+ 	   				   'height': 500,
+                       'backgroundColor':'#e6ffe6',
+                       'resolution': "provinces",
+                         // 'chartArea': {'width': '80%', 'height': '60%'},
+                        'legend': {'position': 'bottom', 'alignment':'center'}
+         };
 
-function selectHandler(e) {
- var selectedItem = geochart.getSelection()[0];
-    if (selectedItem) {
-      var state = data.getValue(selectedItem.row, 0);
-       { alert ('state selected'+state) };
-    }
+		var geochart = new google.visualization.GeoChart(document.getElementById('visualization'));
+  		// geochart.draw(data, {width:0, height: 500, region: "US", resolution: "provinces"});
+  		geochart.draw(data, options);
+ 		
+ 		//handle click 
+  		google.visualization.events.addListener(geochart, 'select',selectHandler );
 
-}
-}
+		function selectHandler(e) {
+		var selectedItem = geochart.getSelection()[0];
+		   if (selectedItem) {
+		     var state = data.getValue(selectedItem.row, 0);
+		      { alert ('state selected'+state) };
+	   		}
+		}
+	}
 
     </script>
 </head>
 <style>
 		.button {
-			background-color: #52527a;
+			background-color: #e7ffe8;
 			border: none;
-			color: white;
+			color: black;
 			padding: 15px 32px;
 			text-align: center;
 			text-decoration: none;
@@ -56,29 +67,31 @@ function selectHandler(e) {
 		}
 </style>
 
-<body >
+<body>
 
 	<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-	<a href="/home"><h2 "ui-state-default" >Opioid Webpage</h2></a>
+	<a href="/home"><h2 "ui-state-default" >Drug Overdose</h2></a>
+	
 	<div>
-		<p>
-			In the United states, accidental deaths caused by fatal drug overdose is becoming a growing concern due to the rising numbers revealed by recent statistics. The purpose of this project is to find interesting correlations between various relevant factors through data visualizations and determine whether this problem could be tackled through predictive modelling.
+		<p style="margin-left: 400px"> 
+			Heat Map of the United States of America showing the alarming deaths due to drug overdose.
 		</p>
+		<div style="margin-left: 250px" id="visualization"  ></div>
 	</div>
 
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="/home">Homepage</a>
-	<a href="/feedback">Feedback</a>
-    <a href="/aboutUs">About Us</a>
-    <a href="/dashboard">Dashboard</a>
-  </div>
+  	<div id="mySidenav" class="sidenav">
+    	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    	<a href="/home">Homepage</a>
+		<a href="/feedback">Feedback</a>
+    	<a href="/aboutUs">About Us</a>
+    	<a href="/dashboard">Dashboard</a>
+  	</div>
 
 
-	 <div style="position: relative;" id="visualization"></div>
+	
 
 
-<div id="accordion">
+<!-- <div id="accordion">
   <h3>U.S. Opiate Prescriptions</h3>
   <div>
     <p>
@@ -112,15 +125,14 @@ function selectHandler(e) {
 	</ul>
 
   </div>
-</div>
+</div> -->
 
 
-
+<!-- 
 <div class="emptyspace">
 	
 </div>
-
-<p>Reference : https://www.kaggle.com/apryor6/us-opiate-prescriptions/home</p>	
+ -->
 
 </body>
 

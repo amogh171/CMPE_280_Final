@@ -121,3 +121,7 @@ p {
 .emptyspace{
     height: 300px;
 }
+
+body {
+  background-color: rgba(0, 255, 0, 0.1);
+}
