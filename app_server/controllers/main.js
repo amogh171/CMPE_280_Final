@@ -315,7 +315,71 @@ module.exports.dashboard =  async function(req, res) {
             specvspres_row : JSON.stringify(specvspres_rows),
             statevsdeath_columns : JSON.stringify(statevsdeath_columns),
             statevsdeath_rows : JSON.stringify(statevsdeath_rows)
-        }
-    );
+        });
+    };
+
+
+module.exports.state = function(request, result) 
+{
+    // chart 1
+
+    columns = ["Deaths by Drug", "Drug Name"];
+    tableRow = [];
+
+    tableRow.push(["heroin", 2300]);
+    tableRow.push(["fentanyl", 2000]);
+    tableRow.push(["cocaine", 1700]);
+    tableRow.push(["benzodiazpine", 1500]);
+    tableRow.push(["etoh", 1000]);
+
+    //chart 2
+    male = 70;
+    female = 30;
+
+    //chart 3
+    deathByRaceColumn = ["Race", "Death"];
+    deathByRaceRow  = [];
+
+    deathByRaceRow.push(["White", 3500]);
+    deathByRaceRow.push(["Hispanic", 700]);
+    deathByRaceRow.push(["Black", 200]);
+    deathByRaceRow.push(["Asian Other", 100]);
+    deathByRaceRow.push(["Asian Indian", 10]);
+
+    //chart 4
+    deathbyrace = [];
+
+    deathbyrace.push([0.0, 0.0, 0.0]);
+    deathbyrace.push([0.1, 0.2, 0.1]);
+    deathbyrace.push([0.2, 0.2, 0.1]);
+    deathbyrace.push([0.3, 0.3, 0.2]);
+    deathbyrace.push([0.4, 0.3, 0.2]);
+    deathbyrace.push([0.5, 0.4, 0.5]);
+    deathbyrace.push([0.4, 0.4, 0.5]);
+    deathbyrace.push([0.3, 0.3, 0.4]);
+    deathbyrace.push([0.2, 0.2, 0.3]);
+    deathbyrace.push([0.0, 0.0, 0.0]);
+
+
+    //chart 5
+    location = [];
+
+    location.push(["Residence", 2700]);
+    location.push(["Other", 1300]);
+    location.push(["Residential Building", 700]);
+    location.push(["Hotel", 300]);
+    location.push(["Unknown", 200]);
+
+
+    result.render('state', {
+        male, 
+        female,
+        columns : JSON.stringify(columns),
+        tableRow    : JSON.stringify(tableRow),
+        deathByRaceColumn : JSON.stringify(deathByRaceColumn),
+        deathByRaceRow : JSON.stringify(deathByRaceRow),
+        deathbyrace : JSON.stringify(deathbyrace),
+        location : JSON.stringify(location),
+    });
 };
 

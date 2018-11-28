@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>State Charts</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/feedback.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/popup.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/dashboard.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  	<style>
+		.button {
+			background-color: #52527a;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+	</style>
+
+  	<script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      google.charts.setOnLoadCallback(drawChart1);
+      google.charts.setOnLoadCallback(drawChart2);
+      google.charts.setOnLoadCallback(drawChart3);
+      google.charts.setOnLoadCallback(drawChart4);
+      google.charts.setOnLoadCallback(drawChart5);
+
+      function drawChart1() {
+          // var columns=<%- columns %>;
+          var tableRow=<%- tableRow %>;
+
+          var dataTable = google.visualization.arrayToDataTable([
+            ['Deaths by Drug', 'Drug Name', { role: 'style' } ],
+            [tableRow[0][0], tableRow[0][1], 'color: blue'],
+            [tableRow[1][0], tableRow[1][1], 'opacity: 0.5'],
+            [tableRow[2][0], tableRow[2][1], 'color: blue'],
+            [tableRow[3][0], tableRow[3][1], 'opacity: 0.5'],
+            [tableRow[4][0], tableRow[4][1], 'opacity: 0.5'],
+      ]);
+
+          // Set chart options
+          var options = {'title':'Drug Death vs Drug',
+                         'width':550,
+                         'height':300,
+                         // 'backgroundColor':'#FAF6F5',
+                         'chartArea': {'width': '80%', 'height': '60%'},
+                         'legend': {'position': 'bottom', 'alignment':'center'}
+          };
+
+          // Instantiate and draw our chart, passing in some options.
+          var chart1 = new google.visualization.BarChart(document.getElementById('chart_div1'));
+          chart1.draw(dataTable, options);
+      }
+
+      function drawChart2() {
+          var M=<%- male %>;
+          var F=<%- female %>;
+
+        var data = google.visualization.arrayToDataTable([
+          ['Gender', 'Type'],
+          ['Male', M],
+          ['Female', F],
+        ]);
+
+        var options = {
+                      'title': 'Gender vs State Death',
+                      'width':250,
+                      'height':300,
+                      // 'backgroundColor':'#FAF6F5',
+                      'colors': ['#80aaff', '#ff4d6a'],
+                      'legend': {'position': 'bottom', 'alignment':'center'},
+                      'chartArea': {'width': '80%', 'height': '60%'}
+        };
+
+        var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
+        chart2.draw(data, options);
+      }
+
+      function drawChart3() {
+          var deathByRaceColumn=<%- deathByRaceColumn %>;
+          var deathByRaceRow=<%- deathByRaceRow %>;
+
+          var dataTable = google.visualization.arrayToDataTable([
+            ['Race', 'Death', { role: 'style' } ],
+            [deathByRaceRow[0][0], deathByRaceRow[0][1], 'color: blue'],
+            [deathByRaceRow[1][0], deathByRaceRow[1][1], 'opacity: 0.5'],
+            [deathByRaceRow[2][0], deathByRaceRow[2][1], 'color: blue'],
+            [deathByRaceRow[3][0], deathByRaceRow[3][1], 'opacity: 0.5'],
+            [deathByRaceRow[4][0], deathByRaceRow[4][1], 'opacity: 0.5'],
+      ]);
+
+          // Set chart options
+          var options = {'title':'Race vs Death',
+                         'width':550,
+                         'height':300,
+                         // 'backgroundColor':'#FAF6F5',
+                         'chartArea': {'width': '80%', 'height': '60%'},
+                         'legend': {'position': 'bottom', 'alignment':'center'}
+          };
+
+          // Instantiate and draw our chart, passing in some options.
+          var chart3 = new google.visualization.BarChart(document.getElementById('chart_div3'));
+          chart3.draw(dataTable, options);
+      }
+
+      function drawChart4() {
+          var deathbyrace=<%- deathbyrace %>;
+
+          var dataTable = google.visualization.arrayToDataTable([
+            ['Age', 'White', 'Hispanic', 'Black' ],
+            ['10', deathbyrace[0][0], deathbyrace[0][1], deathbyrace[0][2]],
+            ['20', deathbyrace[1][0], deathbyrace[1][1], deathbyrace[1][2]],
+            ['30', deathbyrace[2][0], deathbyrace[2][1], deathbyrace[2][2]],
+            ['40', deathbyrace[3][0], deathbyrace[3][1], deathbyrace[3][2]],
+            ['50', deathbyrace[4][0], deathbyrace[4][1], deathbyrace[4][2]],
+            ['60', deathbyrace[5][0], deathbyrace[5][1], deathbyrace[5][2]],
+            ['70', deathbyrace[6][0], deathbyrace[6][1], deathbyrace[6][2]],
+            ['80', deathbyrace[7][0], deathbyrace[7][1], deathbyrace[7][2]],
+            ['90', deathbyrace[8][0], deathbyrace[8][1], deathbyrace[8][2]],
+            ['100',deathbyrace[9][0], deathbyrace[9][1], deathbyrace[9][2]],
+      ]);
+
+          // Set chart options
+          var options = {'title':'Drug Death vs Drug',
+                         'width':550,
+                         'height':300,
+                         'curveType': 'function',
+                         // 'backgroundColor':'#FAF6F5',
+                         'chartArea': {'width': '80%', 'height': '60%'},
+                         'legend': {'position': 'bottom', 'alignment':'center'}
+          };
+
+          // Instantiate and draw our chart, passing in some options.
+          var chart4 = new google.visualization.LineChart(document.getElementById('chart_div4'));
+          chart4.draw(dataTable, options);
+      }
+
+      function drawChart5() {
+          var location=<%- location %>;
+
+          var dataTable = google.visualization.arrayToDataTable([
+            ['Location', 'Deaths', { role: 'style' } ],
+            [location[0][0], location[0][1], 'color: blue'],
+            [location[1][0], location[1][1], 'opacity: 0.5'],
+            [location[2][0], location[2][1], 'color: blue'],
+            [location[3][0], location[3][1], 'opacity: 0.5'],
+            [location[4][0], location[4][1], 'opacity: 0.5'],
+      ]);
+
+          // Set chart options
+          var options = {'title':'Drug Death vs Drug',
+                         'width':550,
+                         'height':300,
+                         // 'backgroundColor':'#FAF6F5',
+                         'chartArea': {'width': '80%', 'height': '60%'},
+                         'legend': {'position': 'bottom', 'alignment':'center'}
+          };
+
+          // Instantiate and draw our chart, passing in some options.
+          var chart5 = new google.visualization.BarChart(document.getElementById('chart_div5'));
+          chart5.draw(dataTable, options);
+      }
+
+    </script>
+</head>
+
+<body>
+
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+    <h2>State Data</h2>
+
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="/home">Homepage</a>
+      <a href="/feedback">Feedback</a>
+      <a href="/aboutUs">About Us</a>
+      <a href="/dashboard">Dashboard</a>
+    </div>
+
+    <div>
+    	<img style="margin: 40px" src="http://art-en-provence.com/wp-content/uploads/2018/07/California-State-Map-Outline-Map-Of-California-Springs-California-State-Map-Outline-Photography-Gallery-Sites-California-State-Outline-Map.jpg" width="300" height="300" style="margin-left: 100px">	
+
+    	<div style="margin: 40px" id="chart_div1"></div>
+        <div style="margin: 40px" id="chart_div2"></div>
+        <div style="margin: 40px" id="chart_div3"></div>
+        <div style="margin: 40px" id="chart_div4"></div>
+        <div style="margin: 40px" id="chart_div5"></div>
+        <!-- style="position: relative;" -->
+    </div>
+
+  </body>
+
+  <script type="text/javascript" src="/routes/nav.js"></script>
+
+</html>

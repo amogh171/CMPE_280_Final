@@ -69,5 +69,7 @@ router.get('/overdose/:id', ctrlMain.overdoseGet);
 // get dashboard
 router.get('/dashboard', ctrlMain.dashboard);
 
+router.get('/state', ctrlMain.state);
+
 //export this router to use in our index.js
 module.exports = router;
