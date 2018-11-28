@@ -3,16 +3,7 @@
 <head>
 	<title></title>
 </head>
-<style>
-	#droppableV {
-		width: 350px;
-		height: 350px;
-		border:1px solid red;
-	    /*margin-right:10px;*/
-	    float:right;
-	    margin-right: 200px;
-	}
-</style>
+
 <body>
 
 	<div style="margin-left: 10%; margin-top: 40px;margin-right: 50px; display:inline-block;" id="draggableHelperV">
@@ -22,29 +13,6 @@
 
 	</div>
 
-	<div id="droppableV" class="ui-widget-header">
-	  <p class="name">Resize and drag to know more</p>
-	  <p class="intro"> </p>
-	</div>
-
-
 </body>
-
-<script>
-	
-	$('#draggableHelperV').draggable();
-	$('#imageV').resizable();
-	$( "#droppableV" ).droppable({
-      drop: function( event, ui ) {
-        $( this )
-          .addClass( "ui-state-highlight" )
-          .find( ".name" )
-            .html( "Vijay Yadav" );
-       	$( this ).find( ".intro" )  
-       		.html( "Former software engineering intern at Autodesk" ); 
-      }
-    });
-
-</script>
 
 </html>

@@ -3,43 +3,13 @@
 <head>
 	<title></title>
 </head>
-<style>
-	#droppableA {
-		width: 350px;
-		height: 350px;
-		border:1px solid red;
-	    /*margin-right:10px;*/
-	    float:right;
-	    margin-right: 200px;
-	}
-</style>
+
 <body>
 
 	<div style="margin-left: 10%; margin-top: 40px;margin-right: 50px; display:inline-block;" id="draggableHelperA">
     	<img src="../style/amogh.jpg" class="aboutUs" id="imageA" >
 	</div>
 
-	<div id="droppableA" class="ui-widget-header" >
-	  <p class="name">Resize and drag to know more</p>
-	  <p class="intro"> </p>
-	</div>
-
 </body>
 
-<script>
-	
-	$('#draggableHelperA').draggable();
-	$('#imageA').resizable();
-	$( "#droppableA" ).droppable({
-      drop: function( event, ui ) {
-        $( this )
-          .addClass( "ui-state-highlight" )
-          .find( ".name" )
-            .html( "Amogh Ramaswamy" );
-       	$( this ).find( ".intro" )  
-       		.html( "Former software engineering intern at Cisco" ); 
-      }
-    });
-	
-</script>
 </html>
