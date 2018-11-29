@@ -506,6 +506,9 @@ module.exports.stateInfo = function(request, result)
         location.push(["In Vehicle", results[0].In_Vehicle]);
         location.push(["Street", results[0].Street]);
 
+        deathByRaceRow.sort(function(a,b) {return b[1] - a[1];} );
+        tableRow.sort(function(a,b) {return b[1] - a[1];} );
+        location.sort( function(a,b) {return b[1] - a[1];} )
 
         result.render('state', {
             male, 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Opioid Webpage</title>
+	<title>Drug Overdose</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
 	<link rel="stylesheet" type="text/css" href="/jquery-ui-theme/jquery-ui.min.css" />
 	<script type="text/javascript" src="/jquery-ui-theme/external/jquery/jquery.js"></script>
@@ -29,7 +29,7 @@
  	   				   'region': "US",
  	   				   'width' : 1000,
  	   				   'height': 500,
-                       'backgroundColor':'#e6ffe6',
+                       // 'backgroundColor':'#e6ffe6',
                        'resolution': "provinces",
                          // 'chartArea': {'width': '80%', 'height': '60%'},
                         'legend': {'position': 'bottom', 'alignment':'center'}
@@ -54,41 +54,15 @@
 		    }
 		}
 	}
-
     </script>
 </head>
-<style>
-		.button {
-			background-color: #e7ffe8;
-			border: none;
-			color: black;
-			padding: 15px 32px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 16px;
-			margin: 4px 2px;
-			cursor: pointer;
-		}
-</style>
-
-<!-- <script type="text/javascript">
-	
-	$(document).ready(function(state){
-    	$("button").click(function(){
-    	    $("#box").load("/stateinfo/"+state);
-    	});
-	});
-
-</script> -->
-
 <body>
 
 	<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
 	<a href="/home"><h2 "ui-state-default" >Drug Overdose</h2></a>
 	
 	<div>
-		<p style="margin-left: 400px"> 
+		<p style="margin: 0 20% 0 20%; font-family: Arial, Helvetica, sans-serif; font-size: 20px"> 
 			Heat Map of the United States of America showing the alarming deaths due to drug overdose.
 		</p>
 		<div style="margin-left: 250px" id="visualization"  ></div>
@@ -97,86 +71,21 @@
   	<div id="mySidenav" class="sidenav">
     	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     	<a href="/home">Homepage</a>
+    	<a href="/dashboard">Dashboard</a>
 		<a href="/feedback">Feedback</a>
     	<a href="/aboutUs">About Us</a>
-    	<a href="/dashboard">Dashboard</a>
+  	</div>
+
+  	<div style="height: 20px">
+  		
   	</div>
 
 
   	<div id="box">
   		<!-- <h2>click to open the state page</h2> -->
   	</div>
-<!--   	<button type="button">open page</button> -->
 
 </body>
 
-
-<script>
-	i = 0;
-
-    function changeTheme() {
-        i ++;
-        var body_tag = document.getElementsByTagName("BODY")[0];
-        var head_tag = document.getElementsByTagName("H2")[0];
-        if (i % 2){
-            body_tag.style.backgroundColor = "black";
-            body_tag.style.color = "white";
-            head_tag.style.color = "white";
-        }
-        else {
-            body_tag.style.backgroundColor = "white";
-            body_tag.style.color = "black";
-            head_tag.style.color = "black";
-        }
-    }
-
-	function init(){
-	
-draw();
-	setInterval(draw, 500);
-	}
-	function draw(){
-		//requestAnimationFrame(draw);
-		var canvas= document.getElementById("canvas");
-		var c= canvas.getContext('2d');
-		 c.clearRect(0,0,canvas.width,canvas.height);
-		//c.clearRect(0,0,280,200);
-		 c.save();
-		//c.translate(150,130);
-		c.translate(canvas.width/2,canvas.height/2);
-		
-		var circleNumber =20;
-		var radius=50;
-		var size= 7;
-		
-		for(var i=1;i<=circleNumber;i++){
-			c.fillStyle='hsl('+360*Math.random() + ',100%,60%)'; 
-			c.beginPath();
-			c.arc(0,radius,size,0,2*Math.PI,false);
-			c.rotate(2*Math.PI/circleNumber);
-			c.fill();
-		}
-		//c.translate(-150,-130);
-		c.translate(-canvas.width/2,-canvas.height/2);
-		
-	}	
-
-	var coll = document.getElementsByClassName("foldable");
-	var i;
-
-	for (i = 0; i < coll.length; i++) {
-	  coll[i].addEventListener("click", function() {
-	    this.classList.toggle("active");
-	    var content = this.nextElementSibling;
-	    if (content.style.maxHeight){
-	      content.style.maxHeight = null;
-	    } else {
-	      content.style.maxHeight = content.scrollHeight + "px";
-	    } 
-	  });
-	}
-	
-		
-</script>
 <script type="text/javascript" src="/routes/nav.js"></script>
 </html>
