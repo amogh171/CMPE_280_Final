@@ -414,8 +414,15 @@ module.exports.stateInfo = function(request, result)
         tableRow.push(["cocaine", results[0].cocaine]);
         tableRow.push(["benzodiazepine", results[0].benzodiazepine]);
         tableRow.push(["etoh", results[0].etoh]);
-        tableRow.push(["etoh", results[0].etoh]);
-    
+        tableRow.push(["other opiods", results[0].any_opiooid]);
+        tableRow.push(["oxycodone", results[0].oxycodone]);
+        tableRow.push(["methadone", results[0].methadone]);
+        tableRow.push(["hydrocodone", results[0].hydrocodone]);
+        tableRow.push(["amphet", results[0].amphet]);
+        tableRow.push(["oxymorphone", results[0].oxymorphone]);
+        tableRow.push(["tramad", results[0].tramad]);
+        tableRow.push(["morphine", results[0].morphine]);
+           
 
         //chart 2
         male = results[0].Male;
