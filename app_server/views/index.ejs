@@ -49,7 +49,7 @@
 		    	if (state != 'CA' && state != 'OH' && state != 'NM' && state != 'WV' && state != 'UT' && state != 'KY' && state != 'AZ' && state != 'NV'){	
 		    	}else{
 		    		// window.location = "http://www.localhost:3000/stateinfo/"+state;
-
+		    		$("#box").load("/stateinfo/"+state);
 		    	}
 		    }
 		}
@@ -72,15 +72,15 @@
 		}
 </style>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	
-	$(document).ready(function(){
+	$(document).ready(function(state){
     	$("button").click(function(){
-    	    $("#box").load("/stateinfo/CA");
+    	    $("#box").load("/stateinfo/"+state);
     	});
 	});
 
-</script>
+</script> -->
 
 <body>
 
@@ -106,7 +106,7 @@
   	<div id="box">
   		<!-- <h2>click to open the state page</h2> -->
   	</div>
-  	<button type="button">open page</button>
+<!--   	<button type="button">open page</button> -->
 
 </body>
 
