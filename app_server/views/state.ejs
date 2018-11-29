@@ -48,8 +48,8 @@
       ]);
 
           // Set chart options
-          var options = {'title':'Drug Death vs Drug',
-                         'width':550,
+          var options = {'title':'Deaths by drug type',
+                         'width':600,
                          'height':300,
                          'animation':{
                           'startup': true,
@@ -57,12 +57,12 @@
                           'easing': 'out',
                          },
                          // 'backgroundColor':'#FAF6F5',
-                         'chartArea': {'width': '80%', 'height': '60%'},
+                         'chartArea': {'width': '65%', 'height': '60%'},
                          'legend': {'position': 'bottom', 'alignment':'center'}
           };
 
           // Instantiate and draw our chart, passing in some options.
-          var chart1 = new google.visualization.BarChart(document.getElementById('chart_div1'));
+          var chart1 = new google.visualization.ColumnChart(document.getElementById('chart_div1'));
           chart1.draw(dataTable, options);
       }
 
@@ -88,7 +88,7 @@
                       // 'backgroundColor':'#FAF6F5',
                       'colors': ['#80aaff', '#ff4d6a'],
                       'legend': {'position': 'bottom', 'alignment':'center'},
-                      'chartArea': {'width': '80%', 'height': '60%'}
+                      'chartArea': {'width': '65%', 'height': '60%'}
         };
 
         var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
@@ -110,7 +110,7 @@
 
           // Set chart options
           var options = {'title':'Race vs Death',
-                         'width':550,
+                         'width':500,
                          'height':300,
                          'animation':{
                           'startup': true,
@@ -118,7 +118,7 @@
                           'easing': 'out',
                          },
                          // 'backgroundColor':'#FAF6F5',
-                         'chartArea': {'width': '80%', 'height': '60%'},
+                         'chartArea': {'width': '70%', 'height': '60%'},
                          'legend': {'position': 'bottom', 'alignment':'center'}
           };
 
@@ -146,7 +146,7 @@
 
           // Set chart options
           var options = {'title':'Drug Death vs Drug',
-                         'width':550,
+                         'width':500,
                          'height':300,
                          'animation':{
                           'startup': true,
@@ -155,7 +155,7 @@
                          },
                          'curveType': 'function',
                          // 'backgroundColor':'#FAF6F5',
-                         'chartArea': {'width': '80%', 'height': '60%'},
+                         'chartArea': {'width': '70%', 'height': '60%'},
                          'legend': {'position': 'bottom', 'alignment':'center'}
           };
 
@@ -178,7 +178,7 @@
 
           // Set chart options
           var options = {'title':'Drug Death vs Drug',
-                         'width':550,
+                         'width':500,
                          'height':300,
                          'animation':{
                           'startup': true,
@@ -186,16 +186,24 @@
                           'easing': 'out',
                          },
                          // 'backgroundColor':'#FAF6F5',
-                         'chartArea': {'width': '80%', 'height': '60%'},
+                         'chartArea': {'width': '70%', 'height': '60%'},
                          'legend': {'position': 'bottom', 'alignment':'center'}
           };
 
           // Instantiate and draw our chart, passing in some options.
-          var chart5 = new google.visualization.BarChart(document.getElementById('chart_div5'));
+          var chart5 = new google.visualization.ColumnChart(document.getElementById('chart_div5'));
           chart5.draw(dataTable, options);
       }
 
     </script>
+    <style type="text/css">
+      .top {
+        background-color: lightgrey;
+        border: 2px solid green;
+        padding: 15px;
+        margin: 15px;
+      }
+    </style>
 </head>
 
 <body>
@@ -212,10 +220,8 @@
       <a href="/dashboard">Dashboard</a>
     </div> -->
 
-    <div>
-    	<img style="margin: 40px" src="http://art-en-provence.com/wp-content/uploads/2018/07/California-State-Map-Outline-Map-Of-California-Springs-California-State-Map-Outline-Photography-Gallery-Sites-California-State-Outline-Map.jpg" width="300" height="300" style="margin-left: 100px">	
-
-    	<div style="margin: 40px" id="chart_div1"></div>
+    <div class="box" style="margin-left: 100px; margin-right: 100px;" >
+    	  <div style="margin: 40px" id="chart_div1"></div>
         <div style="margin: 40px" id="chart_div2"></div>
         <div style="margin: 40px" id="chart_div3"></div>
         <div style="margin: 40px" id="chart_div4"></div>
