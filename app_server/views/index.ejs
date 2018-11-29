@@ -8,6 +8,7 @@
   	<script type="text/javascript" src="/jquery-ui-theme/jquery-ui.min.js"></script>
   	<script type="text/javascript" src="/js/accordion.js"></script>
   	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   	
   	<script type="text/javascript">
     // Load the Visualization API and the corechart package.
@@ -47,7 +48,8 @@
 		    	var state = data.getValue(selectedItem.row, 0);
 		    	if (state != 'CA' && state != 'OH' && state != 'NM' && state != 'WV' && state != 'UT' && state != 'KY' && state != 'AZ' && state != 'NV'){	
 		    	}else{
-		    		window.location = "http://www.localhost:3000/stateinfo/"+state;
+		    		// window.location = "http://www.localhost:3000/stateinfo/"+state;
+
 		    	}
 		    }
 		}
@@ -70,6 +72,16 @@
 		}
 </style>
 
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+    	$("button").click(function(){
+    	    $("#box").load("/stateinfo/CA");
+    	});
+	});
+
+</script>
+
 <body>
 
 	<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
@@ -91,51 +103,10 @@
   	</div>
 
 
-	
-
-
-<!-- <div id="accordion">
-  <h3>U.S. Opiate Prescriptions</h3>
-  <div>
-    <p>
-  	Accidental death by fatal drug overdose is a rising trend in the United States. What can you do to help?
-
-	This dataset contains summaries of prescription records for 250 common opioid and non-opioid drugs written by 25,000 unique licensed medical professionals in 2014 in the United States for citizens covered under Class D Medicare as well as some metadata about the doctors themselves. This is a small subset of data that was sourced from cms.gov. The full dataset contains almost 24 million prescription instances in long format. I have cleaned and compiled this data here in a format with 1 row per prescriber and limited the approximately 1 million total unique prescribers down to 25,000 to keep it manageable. If you are interested in more data, you can get the script I used to assemble the dataset here and run it yourself. The main data is in prescriber-info.csv. There is also opioids.csv that contains the names of all opioid drugs included in the data and overdoses.csv that contains information on opioid related drug overdose fatalities.
-  	</p>
-  </div>
-  <h3>Data characteristics</h3>
-  <div >
-	<ul>
-		NPI – unique National Provider Identifier number
-	</ul>
-	<ul>
-		Gender - (M/F)
-	</ul>
-	<ul>
-		State - U.S. State by abbreviation
-	</ul>
-	<ul>
-		Credentials - set of initials indicative of medical degree
-	</ul>
-	<ul>
-		Specialty - description of type of medicinal practice
-	</ul>
-	<ul>
-		A long list of drugs with numeric values indicating the total number of prescriptions written for the year by that individual
-	</ul>
-	<ul>
-		Opioid.Prescriber - a boolean label indicating whether or not that individual prescribed opiate drugs more than 10 times in the year
-	</ul>
-
-  </div>
-</div> -->
-
-
-<!-- 
-<div class="emptyspace">
-	
-</div>
- -->
+  	<div id="box">
+  		<!-- <h2>click to open the state page</h2> -->
+  	</div>
+  	<button type="button">open page</button>
 
 </body>
 
