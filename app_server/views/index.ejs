@@ -50,6 +50,7 @@
 		    	}else{
 		    		// window.location = "http://www.localhost:3000/stateinfo/"+state;
 		    		$("#box").load("/stateinfo/"+state);
+		    		window.location = $('#box').attr('href');
 		    	}
 		    }
 		}
@@ -81,7 +82,8 @@
   	</div>
 
 
-  	<div id="box">
+  	<a name="graph"></a>
+  	<div id="box" href="#graph">
   		<!-- <h2>click to open the state page</h2> -->
   	</div>
 
