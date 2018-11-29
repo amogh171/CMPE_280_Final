@@ -1,6 +1,7 @@
 var Overdose = require('../models/overdose');
 var OverdoseNew = require('../models/overdoseNew');
 var prescriberInfo = require('../models/prescriberinfo');
+var stateInfo = require('../models/stateinfo')
 
 /*
  * GET home page.
@@ -100,16 +101,7 @@ module.exports.vijay = function(request, result)
  */
 module.exports.overdoseGetAll = function(request, result) 
 {
-	/* code to save to the db.. use later
-	var o = new Overdose();
-    o.State = "ZZZZ";
-    o.Population = 120;
-    o.Deaths = 12;
-    o.Abbrev = "ZZ";
-    o.save();
-    */
-    // if u check the console.. u'll see the entire db printed.. we have to display this in tabular format
-    
+   
 	Overdose.find({}, function(err, results){
     //var x= results;
     //console.log("hitting overdoseGet"+results);
@@ -117,7 +109,6 @@ module.exports.overdoseGetAll = function(request, result)
     
     });
 };
-
 
 /*
  * GET overdose for State.
@@ -334,7 +325,7 @@ module.exports.dashboard =  async function(req, res) {
             statevsdeath_columns : JSON.stringify(statevsdeath_columns),
             statevsdeath_rows : JSON.stringify(statevsdeath_rows)
         });
-    };
+};
 
 
 module.exports.state = function(request, result) 
@@ -399,5 +390,94 @@ module.exports.state = function(request, result)
         deathbyrace : JSON.stringify(deathbyrace),
         location : JSON.stringify(location),
     });
+};
+
+module.exports.stateInfo = function(request, result) 
+{
+    stateInfo.find({abbrev: request.params.id}, function(err, results){
+
+
+        // console.log("Test Value")
+        // console.log(results)
+        // console.log(results[0].Chinese)
+
+        // chart 1
+
+        columns = ["Deaths by Drug", "Drug Name"];
+        tableRow = [];
+
+        tableRow.push(["heroin", results[0].heroin]);
+        tableRow.push(["fentanyl", results[0].fentanyl]);
+        tableRow.push(["cocaine", results[0].cocaine]);
+        tableRow.push(["benzodiazepine", results[0].benzodiazepine]);
+        tableRow.push(["etoh", results[0].etoh]);
+        tableRow.push(["etoh", results[0].etoh]);
+    
+
+        //chart 2
+        male = results[0].Male;
+        female = results[0].Female;
+
+        //chart 3
+        deathByRaceColumn = ["Race", "Death"];
+        deathByRaceRow  = [];
+
+        deathByRaceRow.push(["White", results[0].White]);
+        deathByRaceRow.push(["Hispanic", results[0].Hispanic]);
+        deathByRaceRow.push(["Black", results[0].Black]);
+        deathByRaceRow.push(["Asian", results[0].Asian]);
+        deathByRaceRow.push(["Chinese", results[0].Chinese]);
+
+        // var a = results[0].White
+        // console.log(a)
+        // deathByRaceRow.push(["White", a]);
+        // deathByRaceRow.push(["Hispanic", 245]);
+        // deathByRaceRow.push(["Black", 183]);
+        // deathByRaceRow.push(["Asian", 252]);
+        // deathByRaceRow.push(["Chinese", 236]);
+
+        // console.log(deathByRaveRow)
+
+        //chart 4
+        deathbyrace = [];
+
+        deathbyrace.push([0.0, 0.0, 0.0]);
+        deathbyrace.push([0.1, 0.2, 0.1]);
+        deathbyrace.push([0.2, 0.2, 0.1]);
+        deathbyrace.push([0.3, 0.3, 0.2]);
+        deathbyrace.push([0.4, 0.3, 0.2]);
+        deathbyrace.push([0.5, 0.4, 0.5]);
+        deathbyrace.push([0.4, 0.4, 0.5]);
+        deathbyrace.push([0.3, 0.3, 0.4]);
+        deathbyrace.push([0.2, 0.2, 0.3]);
+        deathbyrace.push([0.0, 0.0, 0.0]);
+
+
+        //chart 5
+        location = [];
+
+        location.push(["Residence", results[0].Residance]);
+        location.push(["Hotel", results[0].Hotel]);
+        location.push(["Hospital", results[0].Hospital]);
+        location.push(["In Vehicle", results[0].In_Vehicle]);
+        location.push(["Street", results[0].Street]);
+
+
+        result.render('state', {
+            male, 
+            female,
+            columns : JSON.stringify(columns),
+            tableRow    : JSON.stringify(tableRow),
+            deathByRaceColumn : JSON.stringify(deathByRaceColumn),
+            deathByRaceRow : JSON.stringify(deathByRaceRow),
+            deathbyrace : JSON.stringify(deathbyrace),
+            location : JSON.stringify(location),
+        });
+
+            
+            
+        });   
+
+    
 };
 
