@@ -435,8 +435,8 @@ module.exports.stateInfo = function(request, result)
         deathByRaceRow.push(["White", results[0].White]);
         deathByRaceRow.push(["Hispanic", results[0].Hispanic]);
         deathByRaceRow.push(["Black", results[0].Black]);
-        deathByRaceRow.push(["Asian", results[0].Asian]);
-        deathByRaceRow.push(["Chinese", results[0].Chinese]);
+        deathByRaceRow.push(["Chinese", results[0].Asian]);
+        deathByRaceRow.push(["Indian", results[0].Chinese]);
 
         // console.log(deathByRaveRow)
 
