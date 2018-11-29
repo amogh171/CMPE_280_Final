@@ -58,7 +58,7 @@
           var dataTable = google.visualization.arrayToDataTable([
             ['State', 'Deaths by Opioid Overdose', { role: 'style' } ],
             [tableRow[0][0], tableRow[0][1], 'color: blue'],
-            [tableRow[1][0], tableRow[1][1], 'opacity: 0.5'],
+            [tableRow[1][0], tableRow[1][1], 'color: blue'],
             [tableRow[2][0], tableRow[2][1], 'color: blue'],
             [tableRow[3][0], tableRow[3][1], 'opacity: 0.5'],
             [tableRow[4][0], tableRow[4][1], 'opacity: 0.5'],
@@ -74,6 +74,11 @@
           var options = {'title':'State vs Deaths Caused By Opioid Overdose',
                          'width':550,
                          'height':300,
+                         'animation':{
+                          'startup': true,
+                          'duration': 2000,
+                          'easing': 'out',
+                         },
                          'backgroundColor':'#FAF6F5',
                          'chartArea': {'width': '80%', 'height': '60%'},
                          'legend': {'position': 'bottom', 'alignment':'center'}
@@ -98,6 +103,11 @@
                       'title': 'Opioid Doctor - Gender Distribution',
                       'width':250,
                       'height':300,
+                      'animation':{
+                          'startup': true,
+                          'duration': 2000,
+                          'easing': 'out',
+                         },
                       'backgroundColor':'#FAF6F5',
                       'colors': ['#80aaff', '#ff4d6a'],
                       'legend': {'position': 'bottom', 'alignment':'center'},
@@ -137,6 +147,11 @@
           var options3 = {'title':'Top 10 States with most Opioid Drugs Prescribed',
                          'width':565,
                          'height':300,
+                         'animation':{
+                          'startup': true,
+                          'duration': 2000,
+                          'easing': 'out',
+                         },
                          'backgroundColor':'#FAF6F5',
                          'chartArea': {'width': '70%', 'height': '60%'},
                          'legend': {'position': 'bottom', 'alignment':'center'}
@@ -176,6 +191,11 @@
           var options4 = {'title':'Specialty vs # Opioid Drugs Prescribed ( x 10^(4))',
                          'width':850,
                          'height':300,
+                         'animation':{
+                          'startup': true,
+                          'duration': 2000,
+                          'easing': 'out',
+                         },
                          'backgroundColor':'#FAF6F5',
                          'chartArea': {'width': '80%', 'height': '60%'},
                          'legend': {'position': 'bottom', 'alignment':'center'}
@@ -201,7 +221,7 @@
             ['State', 'Death Ratio (Deaths by Opioid Overdose/Population)', { role: 'style' } ],
             [statevsdeath_rows[0][0], statevsdeath_rows[0][1], 'color : blue'],
             [statevsdeath_rows[1][0], statevsdeath_rows[1][1], 'color : blue'],
-            [statevsdeath_rows[2][0], statevsdeath_rows[2][1], 'opacity: 0.5'],
+            [statevsdeath_rows[2][0], statevsdeath_rows[2][1], 'color : blue'],
             [statevsdeath_rows[3][0], statevsdeath_rows[3][1], 'opacity: 0.5'],
             [statevsdeath_rows[4][0], statevsdeath_rows[4][1], 'opacity: 0.5'],
             [statevsdeath_rows[5][0], statevsdeath_rows[5][1], 'opacity: 0.5'],
@@ -215,6 +235,11 @@
           var options5 = {'title':'State vs Death Rate Due to Opioid Consumption ( x 10^(-4))',
                          'width':525,
                          'height':300,
+                         'animation':{
+                          'startup': true,
+                          'duration': 2000,
+                          'easing': 'out',
+                         },
                          'backgroundColor':'#FAF6F5',
                          'chartArea': {'width': '80%', 'height': '60%'},
                          'vAxis' : { 'gridlines': { 'count': 4 } },
