@@ -14,10 +14,72 @@
     // Load the Visualization API and the corechart package.
     google.charts.load('current', {'packages':['corechart']});
  	google.charts.setOnLoadCallback(drawVisualization);
- 	
+ 	var state_dict = 
+    {
+        "AL": "Alabam",
+        "AK": "Alaska",
+        "AZ": "Arizona",
+        "AR": "Arkansas",
+        "CA": "California",
+        "CO": "Colorado",
+        "CT": "Connecticut",
+        "DE": "Delaware",
+        "FL": "Florida",
+        "GA": "Georgia",
+        "HI": "Hawaii",
+        "ID": "Idaho",
+        "IL": "Illinois",
+        "IN": "California",
+        "IA": "Iowa",
+        "KS": "Kansas",
+        "KY": "Kentucky",
+        "LA": "Louisiana",
+        "ME": "Maine",
+        "MD": "Maryland",
+        "MA": "Massachusetts",
+        "MI": "Michigan",
+        "MN": "Minnesota",
+        "MS": "Mississippi",
+        "MO": "Missouri",
+        "MT": "Montana",
+        "NE": "Nebraska",
+        "NV": "Nevada",
+        "NH": "New Hampshire",
+        "NJ": "New Jersey",
+        "NM": "New Mexico",
+        "NY": "New York",
+        "NC": "North Carolina",
+        "ND": "North Dakota",
+        "OH": "Ohio",
+        "OK": "Oklahoma",
+        "OR": "Oregon",
+        "PA": "Pennsylvania",
+        "RI": "Rhode Island",
+        "SC": "South Carolina",
+        "SD": "South Dakota",
+        "TN": "Tennessee",
+        "TX": "Texas",
+        "UT": "Utah",
+        "VT": "Vermont",
+        "VA": "Virginia",
+        "WA": "Washington",
+        "WV": "West Virginia",
+        "WI": "Wisconsin",
+        "WY": "Wyoming",
+        "AS" :  "American Samoa",
+        "DC" :  "District of Columbia",
+        "FM" :  "Federated States of Micronesia",
+        "GU" :  "Guam",
+        "MH" :  "Marshall Islands",
+        "MP" :  "Northern Mariana Islands",
+        "PW" :  "Palau",
+        "PR" :  "Puerto Rico",
+        "VI" :  "Virgin Islands"
+    }
  	function drawVisualization() {
  	    var tableRow=<%- statevsdeath_rows %>;
  	 	var data = new google.visualization.DataTable();
+ 	 	
  	 	data.addColumn('string', 'State');
  	   	data.addColumn('number', 'Rate');
  	   	tableRow.forEach(function(row) {
@@ -49,14 +111,17 @@
 		    	if (state != 'CA' && state != 'OH' && state != 'NM' && state != 'WV' && state != 'UT' && state != 'KY' && state != 'AZ' && state != 'NV'){	
 		    	}else{
 		    		// window.location = "http://www.localhost:3000/stateinfo/"+state;
+		    		// $("#box").attr("href", "#graph");
+		    		document.getElementById("selectedstate").innerHTML = state_dict[state]+" - Opioid Analysis";
 		    		$("#box").load("/stateinfo/"+state);
-		    		window.location = $('#box').attr('href');
+		    		window.location.href = "#graph";
 		    	}
 		    }
 		}
 	}
     </script>
 </head>
+
 <body>
 
 	<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
@@ -83,7 +148,8 @@
 
 
   	<a name="graph"></a>
-  	<div id="box" href="#graph">
+  	<h2 id="selectedstate"></h2>
+  	<div id="box">
   		<!-- <h2>click to open the state page</h2> -->
   	</div>
 
