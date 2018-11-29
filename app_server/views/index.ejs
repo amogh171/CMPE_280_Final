@@ -44,9 +44,12 @@
 		function selectHandler(e) {
 		var selectedItem = geochart.getSelection()[0];
 		   if (selectedItem) {
-		     var state = data.getValue(selectedItem.row, 0);
-		      { alert ('state selected'+state) };
-	   		}
+		    	var state = data.getValue(selectedItem.row, 0);
+		    	if (state != 'CA' && state != 'OH' && state != 'NM' && state != 'WV' && state != 'UT' && state != 'KY' && state != 'AZ' && state != 'NV'){	
+		    	}else{
+		    		window.location = "http://www.localhost:3000/stateinfo/"+state;
+		    	}
+		    }
 		}
 	}
 

@@ -25,7 +25,7 @@ module.exports.home = async function(request, result)
     stateVsDeathRatio.forEach(function(row) {
         statevsdeath_rows.push([row._id, row.ratio*10000])
     });
-    console.log(statevsdeath_rows);
+    // console.log(statevsdeath_rows);
     result.render('index', {statevsdeath_columns : JSON.stringify(statevsdeath_columns),
             statevsdeath_rows : JSON.stringify(statevsdeath_rows)});
 };
