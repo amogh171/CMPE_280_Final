@@ -71,5 +71,21 @@ router.get('/dashboard', ctrlMain.dashboard);
 
 router.get('/state', ctrlMain.state);
 
+router.get('/stateInfo/:id', ctrlMain.stateInfo); // West Virginia
+
+// router.get('/stateKY', ctrlMain.stateKY); // Kentucky
+
+// router.get('./stateNM', ctrlMain.stateNM); // New Mexico
+
+// router.get('./stateUT', ctrlMain.stateUT); // Utah
+
+// router,get('./stateNV', ctrlMain.stateNV); // Nevada
+
+// router.get('./stateAZ', ctrlMain.stateAZ); // Arizona
+
+// router.get('./stateOH', ctrlMain.stateOH); // Ohio
+
+// router.get('./stateCA', ctrlMain.stateCA); // California
+
 //export this router to use in our index.js
 module.exports = router;

@@ -39,4 +39,6 @@ var stateinfo = new Schema({
 var stateInfo = mongoose.model('states', stateinfo);
 
 // make this available to our users in our Node applications
+
+
 module.exports = stateInfo;

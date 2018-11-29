@@ -3,6 +3,7 @@ var OverdoseNew = require('../models/overdoseNew');
 var prescriberInfo = require('../models/prescriberinfo');
 var stateInfo = require('../models/stateinfo')
 
+
 /*
  * GET home page.
  */
@@ -394,6 +395,8 @@ module.exports.state = function(request, result)
 
 module.exports.stateInfo = function(request, result) 
 {
+    
+
     stateInfo.find({abbrev: request.params.id}, function(err, results){
 
 
@@ -428,29 +431,63 @@ module.exports.stateInfo = function(request, result)
         deathByRaceRow.push(["Asian", results[0].Asian]);
         deathByRaceRow.push(["Chinese", results[0].Chinese]);
 
-        // var a = results[0].White
-        // console.log(a)
-        // deathByRaceRow.push(["White", a]);
-        // deathByRaceRow.push(["Hispanic", 245]);
-        // deathByRaceRow.push(["Black", 183]);
-        // deathByRaceRow.push(["Asian", 252]);
-        // deathByRaceRow.push(["Chinese", 236]);
-
         // console.log(deathByRaveRow)
 
         //chart 4
+        
+   
+        
+        race_age = {
+            "CA" : {"White":  [  0, 0.11, 0.16, 0.18, 0.15, 0.21, 0.1, 0.05, 0.03, 0],
+                    "Black" : [0, 0.067, 0.133, 0.167, 0.2, 0.233, 0.1, 0.067, 0.0333, 0],
+                    "Hispanic" : [ 0, 0.1, 0.1, 0.15, 0.2, 0.15, 0.15, 0.1, 0.05, 0]},
+    
+            "KY" : {"White":  [0.0, 0.05, 0.09, 0.16, 0.21, 0.14, 0.2, 0.09, 0.06, 0.0],
+                    "Black" : [0.0, 0.12, 0.18, 0.13, 0.05, 0.09, 0.28, 0.05, 0.1, 0.0],
+                    "Hispanic" : [0.0, 0.14, 0.04, 0.15, 0.13, 0.13, 0.25, 0.15, 0.02, 0.0]},
+    
+            "WV" : {"White":  [0.0, 0.18, 0.1, 0.09, 0.21, 0.13, 0.2, 0.03, 0.06, 0.0],
+                    "Black" : [0.0, 0.04, 0.2, 0.1, 0.04, 0.2, 0.27, 0.05, 0.1, 0.0],
+                    "Hispanic" : [0.0, 0.03, 0.16, 0.06, 0.18, 0.12, 0.22, 0.04, 0.2, 0.0]},
+    
+            "NM" : {"White":  [0.0, 0.2, 0.18, 0.07, 0.12, 0.08, 0.15, 0.19, 0.01, 0.0],
+                    "Black" : [0.0, 0.04, 0.01, 0.11, 0.34, 0.12, 0.17, 0.11, 0.1, 0.0],
+                    "Hispanic" : [0.0, 0.13, 0.09, 0.11, 0.3, 0.06, 0.12, 0.18, 0.0, 0.0]},
+    
+            "UT" : {"White": [0.0, 0.06, 0.1, 0.02, 0.3, 0.11, 0.18, 0.09, 0.14, 0.0],
+                    "Black" : [0.0, 0.23, 0.1, 0.2, 0.12, 0.04, 0.08, 0.12, 0.1, 0.0],
+                    "Hispanic" : [0.0, 0.09, 0.04, 0.17, 0.15, 0.09, 0.2, 0.16, 0.1, 0.0]},
+    
+            "AZ" : {"White": [0.0, 0.04, 0.15, 0.04, 0.23, 0.13, 0.21, 0.12, 0.08, 0.0],
+                    "Black" : [0.0, 0.11, 0.19, 0.05, 0.05, 0.28, 0.29, 0.01, 0.03, 0.0],
+                    "Hispanic" : [ 0, 0.1, 0.1, 0.15, 0.2, 0.15, 0.15, 0.1, 0.05, 0]},
+    
+            "NV" : {"White":  [0.0, 0.13, 0.13, 0.12, 0.21, 0.08, 0.17, 0.11, 0.06, 0.0],
+                    "Black" : [0.0, 0.27, 0.01, 0.03, 0.04, 0.03, 0.36, 0.17, 0.08, 0.0],
+                    "Hispanic" : [0.0, 0.07, 0.04, 0.14, 0.16, 0.22, 0.15, 0.1, 0.11, 0.0]},
+    
+            "OH" : {"White":  [0.0, 0.12, 0.15, 0.17, 0.18, 0.04, 0.24, 0.02, 0.08, 0.0],
+                    "Black" : [0.0, 0.09, 0.08, 0.19, 0.04, 0.26, 0.22, 0.11, 0.01, 0.0],
+                    "Hispanic" : [ 0, 0.1, 0.1, 0.15, 0.2, 0.15, 0.15, 0.1, 0.05, 0]}       
+    
+        }
+
+        white = race_age[request.params.id]["White"];
+        black = race_age[request.params.id]["Black"];
+        hispanic = race_age[request.params.id]["Hispanic"];
         deathbyrace = [];
 
-        deathbyrace.push([0.0, 0.0, 0.0]);
-        deathbyrace.push([0.1, 0.2, 0.1]);
-        deathbyrace.push([0.2, 0.2, 0.1]);
-        deathbyrace.push([0.3, 0.3, 0.2]);
-        deathbyrace.push([0.4, 0.3, 0.2]);
-        deathbyrace.push([0.5, 0.4, 0.5]);
-        deathbyrace.push([0.4, 0.4, 0.5]);
-        deathbyrace.push([0.3, 0.3, 0.4]);
-        deathbyrace.push([0.2, 0.2, 0.3]);
-        deathbyrace.push([0.0, 0.0, 0.0]);
+  
+        deathbyrace.push([white[0], black[0], hispanic[0]]);
+        deathbyrace.push([white[1], black[1], hispanic[1]]);
+        deathbyrace.push([white[2], black[2], hispanic[2]]);
+        deathbyrace.push([white[3], black[3], hispanic[3]]);
+        deathbyrace.push([white[4], black[4], hispanic[4]]);
+        deathbyrace.push([white[5], black[5], hispanic[5]]);
+        deathbyrace.push([white[6], black[6], hispanic[6]]);
+        deathbyrace.push([white[7], black[7], hispanic[7]]);
+        deathbyrace.push([white[8], black[8], hispanic[8]]);
+        deathbyrace.push([white[9], black[9], hispanic[9]]);
 
 
         //chart 5
@@ -476,7 +513,9 @@ module.exports.stateInfo = function(request, result)
 
             
             
-        });   
+        }
+        
+        );   
 
     
 };
